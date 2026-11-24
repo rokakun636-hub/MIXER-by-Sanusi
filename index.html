@@ -1,75 +1,63 @@
-<!doctype html>
-<html lang="id">
-<head>
+<!doctype html><html lang="id"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#11151b"><link rel="manifest" href="manifest.json">
-<title>MIXER by Sanusi 2.0</title>
+<meta name="theme-color" content="#101419"><link rel="manifest" href="manifest.json"><title>MIXER by Sanusi 3.0</title>
 <style>
-:root{--bg:#101419;--panel:#1a2027;--panel2:#232b34;--line:#39434d;--gold:#e5b85c;--green:#7be0a2;--muted:#a6b0bb}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#35404a,#101419 58%);color:#f1f4f6;font:14px system-ui,Arial}
-header{padding:18px 14px 12px;text-align:center;border-bottom:1px solid #39434d;background:linear-gradient(#252d36,#151a20);box-shadow:0 8px 24px #0008}
-h1{margin:0;font-size:23px;letter-spacing:2px;color:#f1c66f;text-shadow:0 2px 8px #000}header p{margin:5px 0 0;color:#b4bec8;font-size:11px;letter-spacing:1.4px}
-main{max-width:1100px;margin:auto;padding:12px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-button,.filebtn{border:1px solid #59636e;border-radius:8px;padding:10px 12px;color:#f6f7f8;background:linear-gradient(#39434d,#242c34);font-weight:650;cursor:pointer}
-button:active,.filebtn:active{transform:translateY(1px)}.primary{background:linear-gradient(#e9c46d,#a8792d);color:#19140b;border-color:#f3d58b}
-input[type=file]{display:none}.status{color:var(--muted);font-size:12px;margin:8px 0}
-.master{background:linear-gradient(145deg,#28313a,#171d23);border:1px solid #59636e;border-radius:12px;padding:12px;margin-bottom:12px;box-shadow:inset 0 1px #ffffff12,0 8px 20px #0005}
-h2{font-size:13px;letter-spacing:1.3px;color:#f0c66e;margin:0 0 12px;text-transform:uppercase}
-.masterrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}.control{background:#11171d;border:1px solid #35404a;border-radius:9px;padding:10px}
-.control label{display:flex;justify-content:space-between;color:#cbd3da;font-size:12px;margin-bottom:8px}
-input[type=range]{width:100%;accent-color:#e6bd64}
-.meter{height:9px;border-radius:9px;background:#080c10;overflow:hidden;margin-top:7px;border:1px solid #43505a}.meter span{display:block;width:0;height:100%;background:linear-gradient(90deg,#42c879,#e5d45c,#e85d4c)}
+:root{--gold:#e7bd66;--bg:#101419;--panel:#202832;--line:#48545f;--muted:#aab5bf}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#3a4651,#101419 60%);color:#f3f5f7;font:14px system-ui}
+header{text-align:center;padding:18px 12px;background:linear-gradient(#303a44,#151b21);border-bottom:1px solid var(--line)}h1{margin:0;color:var(--gold);letter-spacing:2px;font-size:24px}header p{margin:5px 0 0;color:#b8c1ca;font-size:10px;letter-spacing:1.5px}
+main{max-width:1100px;margin:auto;padding:12px}.toolbar,.transport{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px}
+button,.filebtn,select{background:linear-gradient(#414d58,#252e37);border:1px solid #687580;border-radius:8px;color:#f5f6f7;padding:10px 12px;font-weight:700;font-size:12px}
+.primary{background:linear-gradient(#f0ce7b,#ad7e32);color:#19140a;border-color:#f7dfa0}button:active{transform:translateY(1px)}
+input[type=file]{display:none}input[type=range]{width:100%;accent-color:var(--gold)}
+.panel{background:linear-gradient(145deg,#2a343e,#171e25);border:1px solid #56616b;border-radius:12px;padding:12px;margin:12px 0;box-shadow:inset 0 1px #ffffff12,0 7px 18px #0005}
+h2{font-size:13px;color:var(--gold);letter-spacing:1.3px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}
+.ctrl{background:#11181e;border:1px solid #3d4953;border-radius:8px;padding:9px}.ctrl label{display:flex;justify-content:space-between;font-size:11px;color:#cbd3da;margin-bottom:8px}.ctrl b{color:var(--gold)}
 .deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px}
-.channel{background:linear-gradient(145deg,#303943,#171d23 65%);border:1px solid #58636e;border-radius:11px;padding:10px;box-shadow:inset 0 1px #ffffff18,0 6px 14px #0005;min-width:0}
-.chhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.chname{font-weight:800;color:#f4d18a;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.led{width:8px;height:8px;border-radius:50%;background:#53d58a;box-shadow:0 0 8px #53d58a}
-.trackname{font-size:11px;color:#d2d9df;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:16px;margin-bottom:7px}
-.miniBtns{display:flex;gap:5px;margin:8px 0}.miniBtns button{flex:1;padding:7px 4px;font-size:10px}.on{background:linear-gradient(#d9b55f,#876326);color:#17120a}
-.knobrow{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.knob{background:#11171d;border:1px solid #3d4852;border-radius:7px;padding:6px 3px;text-align:center}.knob label{display:block;font-size:9px;color:#aeb9c3;margin-bottom:3px}.knob input{width:100%;margin:0}.knob b{font-size:9px;color:#e9c875}
-.faderbox{display:flex;align-items:center;justify-content:center;gap:10px;background:#11171d;border:1px solid #3d4852;border-radius:8px;padding:8px;margin-top:8px;height:132px}
-.faderbox input{height:110px;width:28px;writing-mode:vertical-lr;direction:rtl;accent-color:#e4bd67}
-.faderlabel{font-size:10px;color:#aeb9c3;line-height:1.7;text-align:left}
-.transport{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.transport button{flex:1;min-width:70px}
-.section{margin:14px 0}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
-footer{text-align:center;color:#7f8b96;font-size:11px;padding:20px}
-@media(min-width:700px){.deck{grid-template-columns:repeat(4,minmax(0,1fr))}.masterrow{grid-template-columns:repeat(4,1fr)}}
-</style></head>
-<body>
-<header><h1>MIXER <span style="color:#fff">by Sanusi</span></h1><p>VIRTUAL AUDIO STUDIO • MIXING CONSOLE 2.0</p></header>
+.channel{background:linear-gradient(145deg,#35404a,#171d23);border:1px solid #596671;border-radius:10px;padding:10px;box-shadow:inset 0 1px #ffffff18}.chname{color:#f3d18b;font-weight:800;font-size:12px}.filename{font-size:10px;color:#c1cbd3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin:6px 0}
+.chbtn{display:flex;gap:5px}.chbtn button{flex:1;padding:7px 3px;font-size:10px}.active{background:linear-gradient(#e6c16c,#8f682a);color:#17120a}
+.knobs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}.knob{background:#10171d;border:1px solid #3c4852;border-radius:7px;padding:6px 3px;text-align:center}.knob label{font-size:9px;color:#adb8c2}.knob input{margin:4px 0}.knob small{font-size:9px;color:var(--gold)}
+.fader{margin-top:8px;background:#11181e;border:1px solid #3c4852;border-radius:7px;padding:8px}.fader label{display:flex;justify-content:space-between;font-size:10px;color:#bac4cc}.meter{height:8px;background:#080d11;border-radius:8px;margin-top:8px;overflow:hidden}.meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,#43d17b,#e6d55d,#e95c4d)}
+canvas{width:100%;height:150px;background:#080e14;border:1px solid #3b4854;border-radius:8px}
+.status{font-size:11px;color:var(--muted);margin:7px 0}footer{text-align:center;color:#8995a0;font-size:10px;padding:18px}
+@media(min-width:700px){.deck{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style></head><body>
+<header><h1>MIXER <span style="color:white">by Sanusi</span></h1><p>PRO AUDIO MIXING CONSOLE • VERSION 3.0</p></header>
 <main>
-<div class="toolbar">
-<label class="filebtn primary" for="files">＋ TAMBAH AUDIO</label><input id="files" type="file" accept="audio/*" multiple>
-<button id="playAll">▶ PUTAR</button><button id="pauseAll">Ⅱ JEDA</button><button id="stopAll">■ STOP</button>
-<button id="record">● REKAM MIX</button><button id="download" disabled>↓ UNDUH</button>
-</div>
-<div class="status" id="status">Pilih satu atau beberapa file audio dari perangkat Anda.</div>
-<section class="master">
-<h2>MASTER SECTION</h2>
-<div class="masterrow">
-<div class="control"><label>MASTER VOLUME <b id="masterVal">85%</b></label><input id="master" type="range" min="0" max="100" value="85"><div class="meter"><span id="masterMeter"></span></div></div>
-<div class="control"><label>MASTER PAN <b id="panVal">CENTER</b></label><input id="masterPan" type="range" min="-100" max="100" value="0"></div>
-<div class="control"><label>LOW / BASS <b id="bassVal">0 dB</b></label><input id="bass" type="range" min="-12" max="12" value="0"></div>
-<div class="control"><label>HIGH / TREBLE <b id="trebleVal">0 dB</b></label><input id="treble" type="range" min="-12" max="12" value="0"></div>
-</div>
-<div class="transport"><button id="muteMaster">MASTER MUTE</button><button id="reset">RESET MIX</button></div>
-</section>
-<div class="section"><div class="sectionhead"><h2>INPUT CHANNELS</h2><span style="font-size:10px;color:#a6b0bb">GAIN • PAN • EQ • FADER</span></div><div class="deck" id="deck"></div></div>
-<footer>MIXER by Sanusi 2.0 • Audio diproses langsung di browser perangkat Anda.</footer>
+<div class="toolbar"><label class="filebtn primary" for="files">＋ TAMBAH AUDIO</label><input id="files" type="file" accept="audio/*" multiple><button id="play">▶ PLAY ALL</button><button id="pause">Ⅱ PAUSE</button><button id="stop">■ STOP</button><button id="rec">● RECORD MIX</button><button id="save" disabled>↓ DOWNLOAD MIX</button></div>
+<div class="status" id="status">Pilih file audio untuk memulai sesi mixing.</div>
+<section class="panel"><h2>MASTER CONTROL</h2><div class="grid">
+<div class="ctrl"><label>MASTER VOLUME <b id="mv">85%</b></label><input id="master" type="range" min="0" max="100" value="85"></div>
+<div class="ctrl"><label>MASTER PAN <b id="mpv">CENTER</b></label><input id="mp" type="range" min="-100" max="100" value="0"></div>
+<div class="ctrl"><label>MASTER BASS <b id="bv">0 dB</b></label><input id="bass" type="range" min="-12" max="12" value="0"></div>
+<div class="ctrl"><label>MASTER TREBLE <b id="tv">0 dB</b></label><input id="treble" type="range" min="-12" max="12" value="0"></div>
+</div></section>
+<section class="panel"><h2>STUDIO EFFECTS</h2><div class="grid">
+<div class="ctrl"><label>REVERB <b id="rv">0%</b></label><input id="reverb" type="range" min="0" max="100" value="0"></div>
+<div class="ctrl"><label>DELAY / ECHO <b id="dv">0%</b></label><input id="delay" type="range" min="0" max="70" value="0"></div>
+<div class="ctrl"><label>COMPRESSOR <b id="cv">25%</b></label><input id="comp" type="range" min="0" max="100" value="25"></div>
+<div class="ctrl"><label>PRESET MIX</label><select id="preset"><option value="flat">Flat / Neutral</option><option value="vocal">Vocal Clear</option><option value="warm">Warm Studio</option><option value="bright">Bright</option><option value="bass">Bass Boost</option></select></div>
+</div><div class="status">Reverb, delay, dan compressor memproses output master. Hasil rekaman tersedia dalam format WebM jika didukung browser.</div></section>
+<section class="panel"><h2>LIVE SPECTRUM ANALYZER</h2><canvas id="scope" width="1000" height="260"></canvas><div class="status">Visualisasi frekuensi audio yang sedang diputar.</div></section>
+<section class="panel"><h2>INPUT CHANNELS</h2><div class="deck" id="deck"></div></section>
+<footer>MIXER by Sanusi 3.0 • Audio diproses lokal di browser perangkat Anda.</footer>
 </main>
 <script>
-(()=>{'use strict';
-const $=id=>document.getElementById(id);let tracks=[],ctx=null,master=null,masterPan=null,bass=null,treble=null,recorder=null,chunks=[],recordUrl='',muted=false;
-function engine(){if(ctx)return;let AC=window.AudioContext||window.webkitAudioContext;if(!AC){$('status').textContent='Browser tidak mendukung Web Audio API.';return}
-ctx=new AC();master=ctx.createGain();masterPan=ctx.createStereoPanner();bass=ctx.createBiquadFilter();bass.type='lowshelf';bass.frequency.value=180;treble=ctx.createBiquadFilter();treble.type='highshelf';treble.frequency.value=4500;let comp=ctx.createDynamicsCompressor();master.connect(masterPan).connect(bass).connect(treble).connect(comp).connect(ctx.destination);master.gain.value=.85;}
-function addFiles(list){engine();[...list].forEach((f)=>{let audio=new Audio();audio.src=URL.createObjectURL(f);audio.preload='metadata';let src=null,gain=null,pan=null,low=null,mid=null,high=null;if(ctx){src=ctx.createMediaElementSource(audio);gain=ctx.createGain();pan=ctx.createStereoPanner();low=ctx.createBiquadFilter();low.type='lowshelf';low.frequency.value=180;mid=ctx.createBiquadFilter();mid.type='peaking';mid.frequency.value=1000;mid.Q.value=.8;high=ctx.createBiquadFilter();high.type='highshelf';high.frequency.value=4500;src.connect(low).connect(mid).connect(high).connect(gain).connect(pan).connect(master);gain.gain.value=.8;}tracks.push({file:f,audio,gain,pan,low,mid,high,mute:false,solo:false});});render();$('status').textContent=tracks.length+' channel audio siap digunakan.';}
-function render(){$('deck').innerHTML='';tracks.forEach((t,i)=>{let el=document.createElement('div');el.className='channel';el.innerHTML=`<div class="chhead"><span class="chname">CH ${String(i+1).padStart(2,'0')}</span><span class="led"></span></div><div class="trackname" title="${esc(t.file.name)}">${esc(t.file.name)}</div><div class="miniBtns"><button data-act="play">▶</button><button data-act="mute">MUTE</button><button data-act="solo">SOLO</button></div><div class="knobrow"><div class="knob"><label>LOW</label><input data-k="low" type="range" min="-12" max="12" value="0"><b>0 dB</b></div><div class="knob"><label>MID</label><input data-k="mid" type="range" min="-12" max="12" value="0"><b>0 dB</b></div><div class="knob"><label>HIGH</label><input data-k="high" type="range" min="-12" max="12" value="0"><b>0 dB</b></div></div><div class="control" style="margin-top:8px"><label>PAN <b>CENTER</b></label><input data-k="pan" type="range" min="-100" max="100" value="0"></div><div class="faderbox"><input data-k="vol" type="range" min="0" max="100" value="80"><div class="faderlabel">100<br>80<br>60<br>40<br>20<br>0<br><b>LEVEL</b></div></div>`;el.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(b.dataset.act==='play'){if(t.audio.paused)t.audio.play();else t.audio.pause();b.classList.toggle('on',!t.audio.paused)}if(b.dataset.act==='mute'){t.mute=!t.mute;b.classList.toggle('on',t.mute);applySolo()}if(b.dataset.act==='solo'){t.solo=!t.solo;b.classList.toggle('on',t.solo);applySolo()}});el.querySelectorAll('input').forEach(inp=>inp.oninput=()=>{let v=+inp.value,k=inp.dataset.k;if(k==='vol'&&t.gain)t.gain.gain.value=v/100;if(k==='pan'&&t.pan)t.pan.pan.value=v/100;if(k==='low'&&t.low)t.low.gain.value=v;if(k==='mid'&&t.mid)t.mid.gain.value=v;if(k==='high'&&t.high)t.high.gain.value=v;let b=inp.parentElement.querySelector('b');if(b)b.textContent=k==='pan'?(v===0?'CENTER':v<0?'L '+Math.abs(v):'R '+v):v+' dB'});$('deck').append(el);});}
-function applySolo(){let has=tracks.some(t=>t.solo);tracks.forEach(t=>{if(t.gain)t.gain.gain.value=(t.mute||(has&&!t.solo))?0:.8;});}
-function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-$('files').onchange=e=>addFiles(e.target.files);$('playAll').onclick=()=>{engine();if(ctx)ctx.resume();tracks.forEach(t=>t.audio.play())};$('pauseAll').onclick=()=>tracks.forEach(t=>t.audio.pause());$('stopAll').onclick=()=>tracks.forEach(t=>{t.audio.pause();t.audio.currentTime=0});
-$('master').oninput=e=>{let v=+e.target.value;$('masterVal').textContent=v+'%';if(master)master.gain.value=muted?0:v/100};$('masterPan').oninput=e=>{let v=+e.target.value;$('panVal').textContent=v===0?'CENTER':v<0?'L '+-v:'R '+v;if(masterPan)masterPan.pan.value=v/100};$('bass').oninput=e=>{let v=+e.target.value;$('bassVal').textContent=v+' dB';if(bass)bass.gain.value=v};$('treble').oninput=e=>{let v=+e.target.value;$('trebleVal').textContent=v+' dB';if(treble)treble.gain.value=v};
-$('muteMaster').onclick=()=>{muted=!muted;$('muteMaster').classList.toggle('on',muted);if(master)master.gain.value=muted?0:+$('master').value/100};$('reset').onclick=()=>{tracks.forEach(t=>{if(t.gain)t.gain.gain.value=.8;if(t.pan)t.pan.pan.value=0;[t.low,t.mid,t.high].forEach(n=>{if(n)n.gain.value=0})});$('master').value=85;$('master').dispatchEvent(new Event('input'));$('bass').value=0;$('bass').dispatchEvent(new Event('input'));$('treble').value=0;$('treble').dispatchEvent(new Event('input'));$('masterPan').value=0;$('masterPan').dispatchEvent(new Event('input'));$('status').textContent='Pengaturan mixer direset.'};
-$('record').onclick=async()=>{engine();if(!ctx||!tracks.length){$('status').textContent='Tambahkan audio terlebih dahulu.';return}try{await ctx.resume();let dest=ctx.createMediaStreamDestination();master.connect(dest);chunks=[];recorder=new MediaRecorder(dest.stream);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{if(recordUrl)URL.revokeObjectURL(recordUrl);recordUrl=URL.createObjectURL(new Blob(chunks,{type:recorder.mimeType||'audio/webm'}));$('download').disabled=false;$('status').textContent='Rekaman selesai. Tekan UNDUH untuk menyimpan.'};recorder.start();$('record').textContent='■ SELESAI REKAM';$('record').classList.add('on');$('record').onclick=()=>{recorder.stop();$('record').textContent='● REKAM MIX';$('record').classList.remove('on')};$('status').textContent='Sedang merekam output master.'}catch(e){$('status').textContent='Perekaman tidak didukung browser ini.'}};
-$('download').onclick=()=>{if(!recordUrl)return;let a=document.createElement('a');a.href=recordUrl;a.download='MIXER-by-Sanusi-mix.webm';a.click()};
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+(()=>{'use strict';const $=id=>document.getElementById(id);let ctx=null,master,panMaster,bass,treble,comp,dry,wet,convolver,delay,feedback,analyser,recorder,parts=[],recordURL='',tracks=[];
+function setup(){if(ctx)return;let AC=window.AudioContext||window.webkitAudioContext;if(!AC){$('status').textContent='Browser tidak mendukung Web Audio API.';return}ctx=new AC();master=ctx.createGain();panMaster=ctx.createStereoPanner();bass=ctx.createBiquadFilter();bass.type='lowshelf';bass.frequency.value=160;treble=ctx.createBiquadFilter();treble.type='highshelf';treble.frequency.value=5000;comp=ctx.createDynamicsCompressor();dry=ctx.createGain();wet=ctx.createGain();convolver=ctx.createConvolver();let len=ctx.sampleRate*2,imp=ctx.createBuffer(2,len,ctx.sampleRate);for(let c=0;c<2;c++){let d=imp.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.4)}convolver.buffer=imp;delay=ctx.createDelay(2);delay.delayTime.value=.28;feedback=ctx.createGain();feedback.gain.value=.22;analyser=ctx.createAnalyser();analyser.fftSize=2048;
+master.connect(panMaster).connect(bass).connect(treble);bass.connect(comp);comp.connect(dry).connect(analyser);comp.connect(convolver).connect(wet).connect(analyser);comp.connect(delay);delay.connect(wet);delay.connect(feedback).connect(delay);analyser.connect(ctx.destination);dry.gain.value=1;wet.gain.value=0;draw();}
+function add(list){setup();[...list].forEach(f=>{let a=new Audio();a.src=URL.createObjectURL(f);a.preload='metadata';let src=ctx.createMediaElementSource(a),low=ctx.createBiquadFilter(),mid=ctx.createBiquadFilter(),high=ctx.createBiquadFilter(),gain=ctx.createGain(),pan=ctx.createStereoPanner();low.type='lowshelf';low.frequency.value=180;mid.type='peaking';mid.frequency.value=1000;mid.Q.value=.8;high.type='highshelf';high.frequency.value=4500;src.connect(low).connect(mid).connect(high).connect(gain).connect(pan).connect(master);gain.gain.value=.8;tracks.push({file:f,a,low,mid,high,gain,pan,mute:false,solo:false});});render();$('status').textContent=tracks.length+' channel siap.';}
+function render(){$('deck').innerHTML='';tracks.forEach((t,i)=>{let e=document.createElement('div');e.className='channel';e.innerHTML=`<div class="chname">CHANNEL ${String(i+1).padStart(2,'0')}</div><div class="filename" title="${esc(t.file.name)}">${esc(t.file.name)}</div><div class="chbtn"><button data-a="play">▶</button><button data-a="mute">MUTE</button><button data-a="solo">SOLO</button></div><div class="knobs">${['low','mid','high'].map(k=>`<div class="knob"><label>${k.toUpperCase()}</label><input data-k="${k}" type="range" min="-12" max="12" value="0"><small>0 dB</small></div>`).join('')}</div><div class="fader"><label>PAN <b>CENTER</b></label><input data-k="pan" type="range" min="-100" max="100" value="0"><label>CHANNEL FADER <b>80%</b></label><input data-k="vol" type="range" min="0" max="100" value="80"></div>`;e.querySelectorAll('button').forEach(b=>b.onclick=()=>{let a=b.dataset.a;if(a==='play'){t.a.paused?t.a.play():t.a.pause();b.classList.toggle('active',!t.a.paused)}if(a==='mute'){t.mute=!t.mute;b.classList.toggle('active',t.mute);solo()}if(a==='solo'){t.solo=!t.solo;b.classList.toggle('active',t.solo);solo()}});e.querySelectorAll('input').forEach(x=>x.oninput=()=>{let k=x.dataset.k,v=+x.value;if(k==='low')t.low.gain.value=v;if(k==='mid')t.mid.gain.value=v;if(k==='high')t.high.gain.value=v;if(k==='pan')t.pan.pan.value=v/100;if(k==='vol')t.gain.gain.value=v/100;let b=x.parentElement.querySelector('small')||x.previousElementSibling?.querySelector('b');if(b)b.textContent=k==='pan'?(v===0?'CENTER':v<0?'L '+-v:'R '+v):v+(k==='vol'?'%':' dB')});$('deck').append(e);});}
+function solo(){let s=tracks.some(t=>t.solo);tracks.forEach(t=>t.gain.gain.value=(t.mute||(s&&!t.solo))?0:.8)}
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('files').onchange=e=>add(e.target.files);$('play').onclick=()=>{setup();ctx?.resume();tracks.forEach(t=>t.a.play())};$('pause').onclick=()=>tracks.forEach(t=>t.a.pause());$('stop').onclick=()=>tracks.forEach(t=>{t.a.pause();t.a.currentTime=0});
+$('master').oninput=e=>{let v=+e.target.value;$('mv').textContent=v+'%';if(master)master.gain.value=v/100};$('mp').oninput=e=>{let v=+e.target.value;$('mpv').textContent=v===0?'CENTER':v<0?'L '+-v:'R '+v;if(panMaster)panMaster.pan.value=v/100};$('bass').oninput=e=>{let v=+e.target.value;$('bv').textContent=v+' dB';if(bass)bass.gain.value=v};$('treble').oninput=e=>{let v=+e.target.value;$('tv').textContent=v+' dB';if(treble)treble.gain.value=v};
+$('reverb').oninput=e=>{let v=+e.target.value;$('rv').textContent=v+'%';if(wet)wet.gain.value=v/100};$('delay').oninput=e=>{let v=+e.target.value;$('dv').textContent=v+'%';if(delay)feedback.gain.value=Math.min(.65,v/120);if(wet)wet.gain.value=Math.max(+ $('reverb').value/100,v/100*.45)};$('comp').oninput=e=>{let v=+e.target.value;$('cv').textContent=v+'%';if(comp){comp.threshold.value=-v*.45;comp.ratio.value=1+v/12}};
+$('preset').onchange=e=>{let p=e.target.value;if(p==='flat'){$('bass').value=0;$('treble').value=0;$('reverb').value=0;$('delay').value=0}if(p==='vocal'){$('bass').value=-2;$('treble').value=4;$('reverb').value=16;$('delay').value=8}if(p==='warm'){$('bass').value=3;$('treble').value=1;$('reverb').value=22;$('delay').value=5}if(p==='bright'){$('bass').value=-1;$('treble').value=6;$('reverb').value=10;$('delay').value=0}if(p==='bass'){$('bass').value=7;$('treble').value=2;$('reverb').value=5;$('delay').value=0}['bass','treble','reverb','delay'].forEach(k=>$(k).dispatchEvent(new Event('input')))};
+function draw(){if(!analyser)return;let c=$('scope'),g=c.getContext('2d'),data=new Uint8Array(analyser.frequencyBinCount);function frame(){requestAnimationFrame(frame);analyser.getByteFrequencyData(data);g.fillStyle='#080e14';g.fillRect(0,0,c.width,c.height);let n=70,w=c.width/n;for(let i=0;i<n;i++){let v=data[Math.floor(i*data.length/n)]/255,h=v*c.height*.9;g.fillStyle=i%3===0?'#e7bd66':'#57c98b';g.fillRect(i*w+2,c.height-h,w-4,h)}}frame()}
+$('rec').onclick=async()=>{setup();if(!ctx||!tracks.length){$('status').textContent='Tambahkan audio sebelum merekam.';return}try{await ctx.resume();let dest=ctx.createMediaStreamDestination();analyser.connect(dest);parts=[];recorder=new MediaRecorder(dest.stream);recorder.ondataavailable=e=>{if(e.data.size)parts.push(e.data)};recorder.onstop=()=>{recordURL=URL.createObjectURL(new Blob(parts,{type:recorder.mimeType||'audio/webm'}));$('save').disabled=false;$('status').textContent='Rekaman siap diunduh.'};recorder.start();$('rec').textContent='■ STOP RECORD';$('rec').onclick=()=>{recorder.stop();$('rec').textContent='● RECORD MIX';$('rec').onclick=recordStart};$('status').textContent='Sedang merekam output mixer.'}catch(e){$('status').textContent='Perekaman tidak tersedia di browser ini.'}};
+function recordStart(){$('rec').onclick=null;$('rec').click()}
+$('save').onclick=()=>{if(!recordURL)return;let a=document.createElement('a');a.href=recordURL;a.download='MIXER-by-Sanusi-Recording.webm';a.click()};
+if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 })();
 </script></body></html>
