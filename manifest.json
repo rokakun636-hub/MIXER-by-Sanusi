@@ -1,1 +1,15 @@
-{"name":"MIXER by Sanusi","short_name":"MIXER Sanusi","start_url":"./","display":"standalone","background_color":"#101419","theme_color":"#101419","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]}
+{
+  "name": "MIXER by Sanusi",
+  "short_name": "MIXER",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b1017",
+  "theme_color": "#10151d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
