@@ -1,16 +1,18 @@
-# MIXER by Sanusi 4.0
+# MIXER by Sanusi 5.0
 
-Mixer audio berbasis web untuk Android dan desktop.
-
-## Cara menjalankan
-Buka `index.html` melalui GitHub Pages. Tekan **START AUDIO** sebelum memutar audio.
+## Upload ke GitHub Pages
+1. Ekstrak ZIP ini.
+2. Buka repository GitHub `MIXER-by-Sanusi`.
+3. Upload lima file dari ZIP ke root repository: `index.html`, `manifest.json`, `sw.js`, `icon.svg`, `README.md`.
+4. Commit changes.
+5. Buka GitHub Pages dan refresh.
 
 ## Fitur
-- Multi channel audio file
-- Volume dan pan per channel
-- LOW / MID / HIGH EQ
-- Master volume, pan, tone
-- Reverb, delay, preset, spectrum meter
-- Rekaman output WebM bila browser mendukung
+- Empat channel awal dan tombol tambah channel.
+- Upload beberapa file audio, kontrol play/stop.
+- EQ 7-band per channel, pan, level, mute dan solo.
+- Master level dan meter visual.
+- Preset Flat, Vocal, Bass Boost, Bright.
+- Rekam output ke WebM jika browser mendukung MediaRecorder.
 
-Catatan: ini mixer berbasis browser, bukan pengganti penuh DAW desktop. Untuk performa terbaik gunakan Chrome terbaru.
+Catatan: Kontrol Reverb, Delay, dan Chorus ditampilkan sebagai rancangan UI, tetapi belum memproses sinyal audio.
