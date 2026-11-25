@@ -1,18 +1,23 @@
-# MIXER by Sanusi 5.0
+# MIXER by Sanusi 6.0
 
-## Upload ke GitHub Pages
-1. Ekstrak ZIP ini.
-2. Buka repository GitHub `MIXER-by-Sanusi`.
-3. Upload lima file dari ZIP ke root repository: `index.html`, `manifest.json`, `sw.js`, `icon.svg`, `README.md`.
-4. Commit changes.
-5. Buka GitHub Pages dan refresh.
+Browser-based multi-channel audio mixer.
 
-## Fitur
-- Empat channel awal dan tombol tambah channel.
-- Upload beberapa file audio, kontrol play/stop.
-- EQ 7-band per channel, pan, level, mute dan solo.
-- Master level dan meter visual.
-- Preset Flat, Vocal, Bass Boost, Bright.
-- Rekam output ke WebM jika browser mendukung MediaRecorder.
+## Files
+- `index.html` — mixer interface and Web Audio processing
+- `manifest.json` — PWA metadata
+- `sw.js` — offline cache
+- `icon.svg` — app icon
 
-Catatan: Kontrol Reverb, Delay, dan Chorus ditampilkan sebagai rancangan UI, tetapi belum memproses sinyal audio.
+## Deploy to GitHub Pages
+Upload all files to the repository root and commit. Open the GitHub Pages URL.
+
+## Features
+- Multi-channel audio file playback
+- Per-channel fader, pan, mute, solo and 7-band EQ
+- Master level and master pan
+- Active master reverb, delay and chorus processing
+- Master output VU meters
+- WebM output recording
+- Save/load presets in the browser's local storage
+
+Audio recording and browser audio features depend on browser/device support. Presets are saved locally in the current browser.

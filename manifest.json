@@ -1,10 +1,1 @@
-{
-  "name": "MIXER by Sanusi",
-  "short_name": "MIXER Sanusi",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#101820",
-  "theme_color": "#101820",
-  "description": "Audio mixer web app by Sanusi",
-  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
-}
+{"name":"MIXER by Sanusi","short_name":"MIXER Sanusi","start_url":"./","display":"standalone","background_color":"#10151b","theme_color":"#10151b","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
